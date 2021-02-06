@@ -17,6 +17,4 @@ class Order extends Model
     public function path() {
         return '/orders/' . $this->id;
     }
-
-
 }

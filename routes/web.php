@@ -21,4 +21,6 @@ Route::get('/', function () {
 Route::post('/orders', 'OrdersController@store');
 
 
-Route::patch('/orders/{order}', 'OrdersController@edit');
+Route::patch('/orders/{order}', 'OrdersController@update');
+
+Route::delete('/orders/{order}', 'OrdersController@destroy');

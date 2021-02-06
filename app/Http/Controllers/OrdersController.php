@@ -63,11 +63,22 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Order $order)
+    {
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Order $order)
+    public function update(Request $request, Order $order)
     {
         if($request->status === 'abolished') {
             $order->update(['status' => null]);
@@ -81,17 +92,6 @@ class OrdersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Order  $order
@@ -99,6 +99,6 @@ class OrdersController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
     }
 }

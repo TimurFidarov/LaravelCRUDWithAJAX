@@ -56,4 +56,15 @@ class OrdersTest extends TestCase
         $this->assertNull($order->fresh()->status);
 
     }
+
+    public function test_a_user_can_delete_an_order() {
+        $this->withoutExceptionHandling();
+
+        $order = $order = Order::factory()->create();
+
+        $this->delete('/orders/' . $order->id);
+
+        $this->assertDatabaseMissing('orders', ['name' => $order->name]);
+    }
+
 }
