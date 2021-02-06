@@ -20,11 +20,10 @@ class OrdersController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-
+        return view('orders.create');
     }
 
     /**
@@ -37,16 +36,17 @@ class OrdersController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:5'],
-            'price' => 'required',
+            'price' => ['required', 'integer'],
+            'status' => ['nullable', 'boolean']
         ]);
-
         $order = Order::create([
             'name' => request('name'),
             'price' => request('price'),
-            'status' => $request->has('status'),
+            'status' => request('status'),
         ]);
 
-        return $order;
+
+        return redirect($order->path());
     }
 
     /**

@@ -24,3 +24,7 @@ Route::post('/orders', 'OrdersController@store');
 Route::patch('/orders/{order}', 'OrdersController@update');
 
 Route::delete('/orders/{order}', 'OrdersController@destroy');
+
+Route::get('/orders/create', 'OrdersController@create');
+
+
