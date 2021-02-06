@@ -24,7 +24,6 @@ class OrderFactory extends Factory
         return [
             'name' => $this->faker->name,
             'status' => false,
-            'abolished' => null,
             'price' => $this->faker->numberBetween(1000, 90000),
         ];
     }

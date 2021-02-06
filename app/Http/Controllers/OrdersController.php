@@ -63,12 +63,21 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Request $request, Order $order)
     {
-        //
+        if($request->status === 'abolished') {
+            $order->update(['status' => null]);
+
+        } elseif($request->status == true) {
+            $order->update(['status' => true]);
+        }
+        else {
+            $order->update(['status' => false]);
+        }
     }
 
     /**

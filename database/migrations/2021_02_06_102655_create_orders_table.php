@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->boolean('status')->nullable()->default(false);
-            $table->boolean('abolished')->nullable()->default(false);
             $table->integer('price');
         });
     }

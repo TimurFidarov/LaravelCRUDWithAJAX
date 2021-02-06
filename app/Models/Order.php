@@ -10,8 +10,6 @@ class Order extends Model
     use HasFactory;
     protected $guarded = [];
     protected $casts = [
-        'status' => 'boolean',
-        'abolished' => 'boolean',
         'price' => 'integer'
     ];
 
@@ -20,8 +18,5 @@ class Order extends Model
         return '/orders/' . $this->id;
     }
 
-    public function abolish() {
-        $this->abolished = true;
-        $this->status = null;
-    }
+
 }
