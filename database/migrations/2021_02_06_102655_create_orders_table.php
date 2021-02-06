@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('status');
+            $table->boolean('status')->nullable()->default(false);
+            $table->boolean('abolished')->nullable()->default(false);
             $table->integer('price');
         });
     }

@@ -10,7 +10,7 @@ class OrderFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      *
-     * @var string
+     * @var strings
      */
     protected $model = Order::class;
 
@@ -23,7 +23,8 @@ class OrderFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'status' => 'В пути',
+            'status' => false,
+            'abolished' => null,
             'price' => $this->faker->numberBetween(1000, 90000),
         ];
     }

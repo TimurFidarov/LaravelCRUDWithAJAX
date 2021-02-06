@@ -37,13 +37,13 @@ class OrdersController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:5'],
-            'price' => 'required'
+            'price' => 'required',
         ]);
 
         $order = Order::create([
             'name' => request('name'),
             'price' => request('price'),
-            'status' => true,
+            'status' => $request->has('status'),
         ]);
 
         return $order;
@@ -80,7 +80,6 @@ class OrdersController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
     }
 
     /**
