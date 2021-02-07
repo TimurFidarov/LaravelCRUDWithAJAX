@@ -27,4 +27,4 @@ Route::delete('/orders/{order}', 'OrdersController@destroy');
 
 Route::get('/orders/create', 'OrdersController@create');
 
-
+Route::get('/orders/{order}', 'OrdersController@show');

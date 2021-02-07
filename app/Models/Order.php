@@ -17,4 +17,11 @@ class Order extends Model
     public function path() {
         return '/orders/' . $this->id;
     }
+
+
+    public function status() {
+        if($this->status) return 'В пути';
+        if($this->status === false) return 'Ожидает';
+        return 'Отменен';
+    }
 }

@@ -21,4 +21,19 @@ class OrderTest extends TestCase
 
         $this->assertEquals($order->path(), '/orders/' . $order->id);
     }
+
+    public function test_it_can_tell_its_status() {
+        $order = Order::factory()->create();
+
+        $order->status = false;
+        $this->assertEquals('Ожидает', $order->status());
+
+
+        $order->status = true;
+        $this->assertEquals('В пути', $order->status());
+
+
+        $order->status = null;
+        $this->assertEquals('Отменен', $order->status());
+    }
 }
