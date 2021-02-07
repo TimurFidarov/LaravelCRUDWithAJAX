@@ -7,17 +7,24 @@
 @section('content')
      <section>
         <div class="orders-container">
-            <select name="sort" id="sort" class="orders-sort select">
-                <option value="">Все</option>
-                <option value="abolished">Отмененные</option>
-                <option value="1">Доставленные</option>
-                <option value="0">Недоставленные</option>
-            </select>
+            <div class="flex orders-head">
+                <a href="/orders/create"><button class="btn order-create-btn">
+                    Создать
+                    </button>
+                </a>
+                <select name="sort" id="sort" class="orders-sort select">
+                    <option value="">Все</option>
+                    <option value="abolished">Отмененные</option>
+                    <option value="1">Доставленные</option>
+                    <option value="0">Недоставленные</option>
+                </select>
+            </div>
+
 
             <div class="orders">
                 @forelse($orders as $order)
-                    <div class="order-card">
-                        <svg class="btn order-card_delete-btn" xmlns="http://www.w3.org/2000/svg" height="15"
+                    <div class="order-card" id="{{'order-card-' . $order->id}}">
+                        <svg onclick="selfDelete({{$order->id}})" class="btn order-card_delete-btn" xmlns="http://www.w3.org/2000/svg" height="15"
                              viewBox="0 0 24 24"
                              width="15">
                             <path d="M0 0h24v24H0z" fill="none"/>

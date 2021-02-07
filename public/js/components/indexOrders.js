@@ -19,6 +19,7 @@ function insertOrders(sort = null) {
         data.forEach(order => {
             let orderCard = document.createElement('div');
             orderCard.classList.add('order-card');
+            orderCard.id = 'order-card-' + order.id;
 
             // Name field
             let orderNameField = document.createElement('div');
@@ -64,6 +65,11 @@ function insertOrders(sort = null) {
 
 
 
+            //delete card on click
+            console.log(orderCard.getElementsByTagName('svg')[0]);
+            orderCard.getElementsByTagName('svg')[0].onclick = function () {selfDelete(order.id)};
+
+
             //Append order fields
             orderCard.append(orderNameField);
             orderCard.append(orderPriceField);
@@ -74,6 +80,18 @@ function insertOrders(sort = null) {
             console.log(order);
         })
     });
+}
+
+function selfDelete(id = null) {
+    if (!id) return;
+    fetch(window.location.href + '/' + id, {
+        headers: {
+            'X-CSRF-TOKEN': document.getElementById('csrf-token').content,
+        },
+        method: 'delete'
+    }).then(function () {
+        document.getElementById('order-card-' + id).remove();
+    })
 }
 
 
