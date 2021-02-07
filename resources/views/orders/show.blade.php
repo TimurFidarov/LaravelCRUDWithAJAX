@@ -17,7 +17,7 @@
             </div>
             <div class="order-main-card_field">
                 Статус:
-                {{$order->status()}}
+                {{$order->textStatus}}
             </div>
             <button class="btn order-main-card_btn">Удалить</button>
         </div>

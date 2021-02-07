@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-
+@push('head')
+    <script src="{{ asset('js/components/indexOrders.js')}}"></script>
+@endpush
 
 @section('content')
     <section>
@@ -26,7 +28,7 @@
                     </div>
 
                     <div class="order-card_field">
-                        Статус:{{$order->status()}}
+                        Статус:{{$order->textStatus}}
                     </div>
                 </div>
             @empty

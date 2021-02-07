@@ -26,14 +26,14 @@ class OrderTest extends TestCase
         $order = Order::factory()->create();
 
         $order->status = false;
-        $this->assertEquals('Ожидает', $order->status());
+        $this->assertEquals('В пути', $order->textStatus);
 
 
         $order->status = true;
-        $this->assertEquals('В пути', $order->status());
+        $this->assertEquals('Ожидает', $order->textStatus);
 
 
         $order->status = null;
-        $this->assertEquals('Отменен', $order->status());
+        $this->assertEquals('Отменен', $order->textStatus);
     }
 }

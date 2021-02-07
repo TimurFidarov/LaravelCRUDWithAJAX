@@ -13,15 +13,15 @@ class Order extends Model
         'price' => 'integer'
     ];
 
-
     public function path() {
         return '/orders/' . $this->id;
     }
 
 
-    public function status() {
-        if($this->status) return 'В пути';
-        if($this->status === false) return 'Ожидает';
+    public function getTextStatusAttribute()
+    {
+        if($this->status) return 'Ожидает';
+        if($this->status === false) return 'В пути';
         return 'Отменен';
     }
 }
