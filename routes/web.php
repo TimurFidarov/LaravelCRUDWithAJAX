@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/orders', 'OrdersController@index');
 
 Route::post('/orders', 'OrdersController@store');
-
 
 Route::patch('/orders/{order}', 'OrdersController@update');
 
