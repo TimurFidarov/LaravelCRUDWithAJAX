@@ -20,9 +20,7 @@ class OrdersTest extends TestCase
         $this->withoutExceptionHandling();
         $order = Order::factory()->make(['abolished' => null, 'status' => true]);
 
-
         $this->post('/orders', $order->toArray());
-
 
         $this->assertDatabaseHas('orders', [
             'name' => $order->name,

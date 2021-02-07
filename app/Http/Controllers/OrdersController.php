@@ -96,6 +96,7 @@ class OrdersController extends Controller
         else {
             $order->update(['status' => false]);
         }
+
     }
 
     /**

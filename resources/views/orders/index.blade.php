@@ -7,7 +7,7 @@
 @section('content')
      <section>
         <div class="orders-container">
-            <select name="sort" id="sort" class="orders-sort">
+            <select name="sort" id="sort" class="orders-sort select">
                 <option value="">Все</option>
                 <option value="abolished">Отмененные</option>
                 <option value="1">Доставленные</option>
