@@ -10,16 +10,17 @@ class OrdersController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $orders = $this->getOrders($request->sort);
 
-        $orders = Order::all();
-
-        if(request()->wantsJson()) {
+        if($request->wantsJson()) {
             return $orders->toJson();
         }
+
         return view('orders.index', compact('orders'));
     }
 
@@ -106,5 +107,13 @@ class OrdersController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
+    }
+
+    public function getOrders($sort = null) {
+        if($sort === '0') return Order::where('status', false)->get();
+        if($sort === '1') return Order::where('status', true)->get();
+        if($sort === 'abolished') return Order::where('status', null)->get();
+
+        return Order::all();
     }
 }
